@@ -22,6 +22,18 @@ class Resultats
      */
     private $userIp;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=reponses::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reponse;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=user::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,30 @@ class Resultats
     public function setUserIp(?string $userIp): self
     {
         $this->userIp = $userIp;
+
+        return $this;
+    }
+
+    public function getReponse(): ?reponses
+    {
+        return $this->reponse;
+    }
+
+    public function setReponse(?reponses $reponse): self
+    {
+        $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

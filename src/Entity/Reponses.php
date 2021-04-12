@@ -22,6 +22,12 @@ class Reponses
      */
     private $textReponse;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=questions::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $questions;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +41,18 @@ class Reponses
     public function setTextReponse(string $textReponse): self
     {
         $this->textReponse = $textReponse;
+
+        return $this;
+    }
+
+    public function getQuestions(): ?questions
+    {
+        return $this->questions;
+    }
+
+    public function setQuestions(?questions $questions): self
+    {
+        $this->questions = $questions;
 
         return $this;
     }
