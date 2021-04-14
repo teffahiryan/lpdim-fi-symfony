@@ -28,6 +28,11 @@ class Questions
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_multiple;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +58,18 @@ class Questions
     public function setUser(?user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getIsMultiple(): ?bool
+    {
+        return $this->is_multiple;
+    }
+
+    public function setIsMultiple(bool $is_multiple): self
+    {
+        $this->is_multiple = $is_multiple;
 
         return $this;
     }
