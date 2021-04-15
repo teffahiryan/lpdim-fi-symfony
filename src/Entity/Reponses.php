@@ -23,7 +23,7 @@ class Reponses
     private $textReponse;
 
     /**
-     * @ORM\ManyToOne(targetEntity=questions::class)
+     * @ORM\ManyToOne(targetEntity=Questions::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $questions;
@@ -56,4 +56,6 @@ class Reponses
 
         return $this;
     }
+
+
 }
