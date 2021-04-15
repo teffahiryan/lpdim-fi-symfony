@@ -22,6 +22,7 @@
                 <td>{{ question.isMultiple ? 'Oui' : 'Non' }}</td>
                 <td>
                     <a href="{{ path('questions_show', {'id': question.id}) }}">voir</a>
+                    <a href="{{ path('reponses_index', {'id': question.id}) }}">personnalisation des réponses</a>
                     <a href="{{ path('questions_edit', {'id': question.id}) }}">éditer</a>
                 </td>
             </tr>

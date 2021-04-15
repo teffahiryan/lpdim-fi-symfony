@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Reponses;
+use App\Form\ReponsesType;
 use App\Entity\Questions;
 use App\Form\QuestionsType;
 use App\Repository\QuestionsRepository;
+use App\Repository\ReponsesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +22,7 @@ class QuestionsController extends AbstractController
         return $this->render('questions/index.html.twig', [
             'questions' => $questionsRepository->findAll(),
         ]);
+
     }
 
     #[Route('/new', name: 'questions_new', methods: ['GET', 'POST'])]
