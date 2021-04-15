@@ -8,6 +8,7 @@ use App\Entity\Questions;
 use App\Form\QuestionsType;
 use App\Repository\QuestionsRepository;
 use App\Repository\ReponsesRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,13 +27,14 @@ class QuestionsController extends AbstractController
     }
 
     #[Route('/new', name: 'questions_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request, UserRepository $userRepository): Response
     {
         $question = new Questions();
         $form = $this->createForm(QuestionsType::class, $question);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $question->setUser($userRepository->find(2));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($question);
             $entityManager->flush();
@@ -47,10 +49,12 @@ class QuestionsController extends AbstractController
     }
 
     #[Route('/{id}', name: 'questions_show', methods: ['GET'])]
-    public function show(Questions $question): Response
+    public function show(Questions $question, ReponsesRepository $reponsesRepository): Response
     {
+        $reponses = $reponsesRepository->findBy(['questions' => $question->getId()]);
         return $this->render('questions/show.html.twig', [
             'question' => $question,
+            'reponses' => $reponses
         ]);
     }
 

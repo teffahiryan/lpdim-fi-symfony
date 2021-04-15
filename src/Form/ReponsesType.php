@@ -13,7 +13,6 @@ class ReponsesType extends AbstractType
     {
         $builder
             ->add('textReponse')
-            ->add('questions')
         ;
     }
 

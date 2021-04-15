@@ -14,7 +14,6 @@ class QuestionsType extends AbstractType
         $builder
             ->add('textQuestion')
             ->add('is_multiple')
-            ->add('user')
         ;
     }
 
