@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Question</th>
                 <th>Multipe réponse</th>
+                <th> Résultat </th>
                 <th> Répondre au sondage</th>
                 <th> Modifier réponses </th>
                 <th> Modifier </th>
@@ -21,15 +22,18 @@
             <tr>
                 <td>{{ question.id }}</td>
                 <td>{{ question.textQuestion }}</td>
-                <td>{{ question.isMultiple ? 'Oui' : 'Non' }}</td>
+                <td>{{ question.isMultiple ? '<i class="fas fa-fw fa-check"></i>' : '<i class="fas fa-fw fa-times"></i>' }}</td>
                 <td>
-                    <a href="{{ path('questions_show', {'id': question.id}) }}">répondre</a>
+                    <a href="{{ path('questions_results', {'id': question.id}) }}"> <i class="fas fa-fw fa-poll-h"></i> Résultats </a>
                 </td>
                 <td>
-                    <a href="{{ path('reponses_index', {'id': question.id}) }}">éditer réponses</a>
+                    <a href="{{ path('questions_show', {'id': question.id}) }}"> <i class="fas fa-fw fa-reply"></i> répondre</a>
                 </td>
                 <td>
-                    <a href="{{ path('questions_edit', {'id': question.id}) }}">éditer</a>
+                    <a href="{{ path('reponses_index', {'id': question.id}) }}"> <i class="fas fa-fw fa-plus-square"></i> éditer réponses</a>
+                </td>
+                <td>
+                    <a href="{{ path('questions_edit', {'id': question.id}) }}"> <i class="fas fa-fw fa-edit"></i> éditer</a>
                 </td>
             </tr>
         {% else %}

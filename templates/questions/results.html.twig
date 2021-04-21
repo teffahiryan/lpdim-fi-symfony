@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Résultats : {{ question.textQuestion }} {% endblock %}
+
+{% block body %}
+    <h1> Résultat de la question : {{ question.textQuestion }} </h1>
+
+    <div style="margin-left: 2%; font-size: 20px">
+        {% for reponse in reponses %}
+            <p> {{reponse.textReponse}} = {{ resultats[reponse.id] }} vote(s)</p>
+        {% endfor %}
+    </div>
+
+    <p> Nombre total de votes : {{ resultsTotal }} </p>
+
+    <a href="{{ path('questions_index') }}"> <p style="margin-top: 2%; margin-left: 2%;"> Retour à la liste </p> </a>
+
+{% endblock %}

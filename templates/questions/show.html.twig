@@ -5,7 +5,7 @@
 {% block body %}
     <h1> {{ question.textQuestion }} </h1>
 
-    <form action="" method="post" style="margin-left: 2%;">
+    <form action="{{ path('questions_answer', {'id': question.id}) }}" method="post" style="margin-left: 2%;">
         {% set input_type=question.isMultiple ? 'checkbox' : 'radio' %}
 
         {% for reponse in reponses %}

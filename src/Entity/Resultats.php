@@ -23,7 +23,7 @@ class Resultats
     private $userIp;
 
     /**
-     * @ORM\ManyToOne(targetEntity=reponses::class)
+     * @ORM\ManyToOne(targetEntity=Reponses::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $reponse;
