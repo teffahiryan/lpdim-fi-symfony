@@ -11,7 +11,9 @@
                 <th>Id</th>
                 <th>Question</th>
                 <th>Multipe réponse</th>
-                <th>Actions</th>
+                <th>Voir</th>
+                <th> Ajout réponse </th>
+                <th> Modifier </th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +24,11 @@
                 <td>{{ question.isMultiple ? 'Oui' : 'Non' }}</td>
                 <td>
                     <a href="{{ path('questions_show', {'id': question.id}) }}">voir</a>
+                </td>
+                <td>
                     <a href="{{ path('reponses_index', {'id': question.id}) }}">personnalisation des réponses</a>
+                </td>
+                <td>
                     <a href="{{ path('questions_edit', {'id': question.id}) }}">éditer</a>
                 </td>
             </tr>
