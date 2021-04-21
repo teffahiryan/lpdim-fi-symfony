@@ -3,6 +3,7 @@
 {% block title %}Questions index{% endblock %}
 
 {% block body %}
+ <main style="padding: 2%;">
     <h1>Questions index</h1>
 
     <table class="table">
@@ -44,5 +45,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('questions_new') }}">Créer une nouvelle question</a>
+    <div style="margin-left: 4%; margin-bottom: 2%;">
+        <a href="{{ path('questions_new') }}">Créer une nouvelle question</a>
+    </div>
+
+</main>
+
 {% endblock %}

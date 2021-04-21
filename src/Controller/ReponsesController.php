@@ -77,11 +77,11 @@ class ReponsesController extends AbstractController
     #[Route('/{id}', name: 'reponses_delete', methods: ['POST'])]
     public function delete(Request $request, Reponses $reponse): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$reponse->getId(), $request->request->get('_token'))) {
+        
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($reponse);
             $entityManager->flush();
-        }
+        
 
         return $this->redirectToRoute('reponses_index');
     }

@@ -3,6 +3,7 @@
 {% block title %} Question : {{ question.textQuestion }} {% endblock %}
 
 {% block body %}
+ <main style="padding: 2%;">
     <h1> {{ question.textQuestion }} </h1>
 
     <form action="{{ path('questions_answer', {'id': question.id}) }}" method="post" style="margin-left: 2%;">
@@ -16,5 +17,5 @@
     </form>
 
     <a href="{{ path('questions_index') }}"> <p style="margin-top: 2%; margin-left: 2%;"> Retour à la liste </p> </a>
-
+</main>
 {% endblock %}

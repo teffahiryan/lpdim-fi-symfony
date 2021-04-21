@@ -3,6 +3,7 @@
 {% block title %}Reponses index{% endblock %}
 
 {% block body %}
+ <main style="padding: 2%;">
 
     <h1>Reponses index</h1>
 
@@ -32,5 +33,5 @@
     </table>
 
     <a href="{{ path('reponses_new', {'id': question.id})  }}">Create new</a>
-
+</main>
 {% endblock %}
