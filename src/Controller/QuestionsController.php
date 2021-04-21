@@ -48,7 +48,7 @@ class QuestionsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'questions_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'questions_show', methods: ['GET'])]
     public function show(Questions $question, ReponsesRepository $reponsesRepository): Response
     {
         $reponses = $reponsesRepository->findBy(['questions' => $question->getId()]);
@@ -58,7 +58,7 @@ class QuestionsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'questions_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'questions_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Questions $question): Response
     {
         $form = $this->createForm(QuestionsType::class, $question);

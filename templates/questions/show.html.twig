@@ -5,19 +5,16 @@
 {% block body %}
     <h1> {{ question.textQuestion }} </h1>
 
-    <table>
+    <form action="" method="post" style="margin-left: 2%;">
+        {% set input_type=question.isMultiple ? 'checkbox' : 'radio' %}
+
         {% for reponse in reponses %}
-            <tr>
-                <td>{{ reponse.textReponse }}</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
+            <input type="{{input_type}}" name="answer[]" value="{{reponse.id}}"> {{reponse.textReponse}} <br />
         {% endfor %}
 
-    </table>
+        <button style="margin-top: 1%;"> Envoyer </button>
+    </form>
 
-    <a href="{{ path('questions_index') }}">Retour à la liste</a>
+    <a href="{{ path('questions_index') }}"> <p style="margin-top: 2%; margin-left: 2%;"> Retour à la liste </p> </a>
 
 {% endblock %}
