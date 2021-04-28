@@ -91,16 +91,21 @@ class QuestionsController extends AbstractController
     }
 
     #[Route('/show/{id}', name: 'questions_answer', methods: ['GET', 'POST'])]
-    public function answer(Request $request, Questions $questions, ReponsesRepository $resultats): Response
+    public function answer(Request $request, Questions $questions, ReponsesRepository $reponses, ResultatsRepository $resultats): Response
     {
-        if($request->getMethod() === 'POST'){
+
+        if ($resultats->haveAlreadyAnswered($questions->getId(), $request->getClientIp())) {
+            $this->addFlash('error', 'vous avez déjà répondu à ce sondage');
+            return $this->redirectToRoute('questions_index', ['id' => $questions->getId()]);
+        }
+        else if($request->getMethod() === 'POST'){
             $results = $request->request->get('answer');
             $entityManager = $this->getDoctrine()->getManager();
             foreach($results as $result){
                 $answer = new Resultats();
                 $answer->setUser($this->getUser());
                 $answer->setUserIp($request->getClientIp());
-                $answer->setReponse($resultats->find($result));
+                $answer->setReponse($reponses->find($result));
                 $entityManager->persist($answer);
                 $entityManager->flush();
             }

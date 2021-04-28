@@ -22,7 +22,17 @@
     </head>
     <body id="page-top">
         {{ include('home/includes/header.html.twig') }}
+        <main>
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% endfor %}
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endfor %}
+
         {% block body %}{% endblock %}
+        </main>
         {{ include('home/includes/footer.html.twig') }}
 
         {% block javascripts %}
@@ -38,6 +48,6 @@
 
         {% endblock %}
 
-
+        
     </body>
 </html>
